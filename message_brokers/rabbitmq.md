@@ -63,36 +63,6 @@ channel.start_consuming()
 
 
 
-## Использование с Celery
-
-Celery — это библиотека для фоновой обработки задач. RabbitMQ может использоваться как брокер задач для Celery.
-
-### Установка:
-
-```bash
-pip install celery[rabbitmq]
-```
-
-### Пример конфигурации:
-
-```python
-# tasks.py
-from celery import Celery
-
-app = Celery('tasks', broker='amqp://guest@localhost//')
-
-@app.task
-def send_email(to, subject):
-    print(f"Sending email to {to} with subject {subject}")
-```
-
-Запуск:
-
-```bash
-celery -A tasks worker --loglevel=info
-```
-
-
 
 ## Преимущества RabbitMQ
 
