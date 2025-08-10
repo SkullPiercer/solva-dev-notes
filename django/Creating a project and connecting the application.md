@@ -72,12 +72,12 @@ pip install Django
 
 Для старта приложения используем следующую команду:
 ```
-django-admin startapp <название проекта>
+django-admin startproject <название проекта>
 ```
 
 Наш проект будет посвящен ведению текстовых блогов, поэтому пропишем:
 ```
-django-admin startapp blog
+django-admin startproject blog
 ```
 
 Автоматически создастся структура проекта
