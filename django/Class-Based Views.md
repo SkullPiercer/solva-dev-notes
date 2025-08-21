@@ -63,6 +63,22 @@ class TaskListView(ListView):
 Django сам поймёт, какой шаблон подключить: по умолчанию это будет  
 `task/task_list.html`. В контекст автоматически передаётся объект `page_obj`, с которым удобно работать в шаблоне.
 
+```
+    # Метод для добавления элементов в контекст
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_count'] = Category.objects.count()
+        return context
+        
+	# Метод для обработки параметров url-запроса
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            queryset = queryset.filter(name__startswith=query)
+        return queryset
+```
+
 ---
 ### CreateView — создание новой задачи
 
